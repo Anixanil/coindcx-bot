@@ -4,6 +4,10 @@ import requests
 import time
 import os
 from datetime import datetime
+import http.server
+import threading
+# Render ka port check bypass karne ke liye dummy server
+threading.Thread(target=lambda: http.server.HTTPServer(('0.0.0.0', int(os.environ.get('PORT', 10000))), http.server.BaseHTTPRequestHandler).serve_forever(), daemon=True).start()
 
 # =========================================================================
 # BYBIT FUTURES: LIVE PAPER TRADING BOT (ANTI-SPAM REPORTING FIXED)
